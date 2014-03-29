@@ -1,11 +1,6 @@
-# AK 2048
-Bir [2048](https://github.com/gabrielecirulli/2048) klonudur.
+# Phi2048
+A [2048](https://github.com/gabrielecirulli/2048) clone with pictures of philosophers, in mostly chronological order.
 
-[Buradan oyna!](http://onatm.github.io/ak2048/)
+The code for implementing images has been forked from ak2048: [Buradan oyna!](http://onatm.github.io/ak2048/)
 
-### Screenshot
-
-[![Screenshot](http://i.imgur.com/aNrYl1n.png)](http://i.imgur.com/aNrYl1n.png)
-
-## Lisans
-AK 2048 [MIT lisansı] ile lisanslanmıştır. (https://github.com/onatm/ak2048/blob/master/LICENSE)
+All code is MIT Licensed.
