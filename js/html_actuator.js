@@ -3,9 +3,10 @@ function HTMLActuator() {
   this.scoreContainer   = document.querySelector(".score-container");
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
-
+  this.thinkerSays = document.querySelector(".thinker-says");
   this.score = 0;
 }
+var thinkerSayings = ['Mergere aude', 'Mergo, ergo sum', 'Does not know, still does it', 'Where there is power, there is resistance', 'There is no good tile in the bad', 'The unexamined tile is not worth merging', 'Law is order, good law is good order', 'Omnis determinatio est negatio', 'Merge always according to the universal tile', 'If you gaze long onto a tile, the tile also gazes into you', 'Constant conjunction!' ,'A tile is a square that is through',]
 
 HTMLActuator.prototype.actuate = function (grid, metadata) {
   var self = this;
@@ -105,6 +106,7 @@ HTMLActuator.prototype.positionClass = function (position) {
 
 HTMLActuator.prototype.updateScore = function (score) {
   this.clearContainer(this.scoreContainer);
+  this.clearContainer(this.thinkerSays);
 
   var difference = score - this.score;
   this.score = score;
@@ -117,6 +119,16 @@ HTMLActuator.prototype.updateScore = function (score) {
     addition.textContent = "+" + difference;
 
     this.scoreContainer.appendChild(addition);
+    var message = thinkerSayings[Math.floor(Math.random() * thinkerSayings.length)];
+    var messageElement = document.createElement("p");
+    messageElement.textContent = message;
+    var left = 'left: 70%;';
+    var top = 'top: 25%;';
+    var color = 'color: rgb(' + Math.round(Math.random() * 255) + ', ' + Math.round(Math.random() * 255) + ', ' + Math.round(Math.random() * 255) + ');';
+    var size = 'font-size: 12pt';
+    var styleString = left + top + color + size;
+    messageElement.setAttribute('style', styleString);
+    this.thinkerSays.appendChild(messageElement);
   }
 };
 
@@ -126,7 +138,7 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "BBCM <3" : "BBCM :(";
+  var message = won ? "You have reached the absolute!" : "Perhaps you should have followed the rules!";
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
